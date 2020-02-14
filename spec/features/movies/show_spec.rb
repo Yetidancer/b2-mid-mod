@@ -1,17 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Movie, type: :model do
-  describe 'validations' do
-    it { should validate_presence_of :name }
-    it { should validate_presence_of :creation }
-    it { should validate_presence_of :genre }
-  end
+RSpec.describe 'actor show page', type: :feature do
 
-  describe 'relationships' do
-    it { should belong_to :studio}
-  end
+  context 'as a visitor' do
 
-  describe 'movie methods' do
     before :each do
       @studio_1 = Studio.create(name: "A24")
       @studio_2 = Studio.create(name: "Warner Brothers")
@@ -43,11 +35,19 @@ RSpec.describe Movie, type: :model do
       @actor_4 = Actor.create(name: "Cher",
                               age: 80,
                               movies: [@movie_1,@movie_4])
+
+    end
+    it 'should display actor stats and movies on actor show page.' do
+      visit "/movies/#{@movie_1.id}"
+
+      expect(page).to have_content(@movie_1.name)
+      expect(page).to have_content(@movie_1.creation)
+      expect(page).to have_content(@movie_1.genre)
+      expect(page).to have_content(@actor_2.name)
+      expect(page).to have_content(@actor_4.name)
+      expect(page).to have_content(61)
+
     end
 
-    it 'can sort actors by age' do
-      expect(@movie_1.sort_actors.first).to eq(@actor_2)
-      expect(@movie_1.sort_actors.last).to eq(@actor_4)
-    end
   end
 end
