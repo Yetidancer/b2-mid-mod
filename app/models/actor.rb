@@ -7,7 +7,4 @@ class Actor < ApplicationRecord
     movies.joins(:actor_movies).uniq
   end
 
-  def coworkers
-    coworker_movies
-  end
 end

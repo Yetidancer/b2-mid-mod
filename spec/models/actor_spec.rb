@@ -47,7 +47,7 @@ RSpec.describe Actor, type: :model do
     end
 
     it 'should display coworkers' do
-      expect(@actor_1.coworkers).to eq([@actor_3,@actor_4])
+      expect(@actor_1.coworker_movies).to eq([@movie_2,@movie_4])
     end
   end
 
