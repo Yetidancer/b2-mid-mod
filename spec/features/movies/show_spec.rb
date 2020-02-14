@@ -49,5 +49,14 @@ RSpec.describe 'actor show page', type: :feature do
 
     end
 
+    it 'should be able to add actor.' do
+      visit "/movies/#{@movie_1.id}"
+      expect(page).to have_content("Name:")
+      fill_in :name, with: "Yogi Bear"
+      click_on "Add Actor"
+      expect(current_path).to eq('/movies/#{@movie_1.id}')
+      expect(page).to have_content("Yogi Bear")
+    end
+
   end
 end

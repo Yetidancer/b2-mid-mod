@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   get '/movies/:id', to: 'movies#show'
 
+  post '/movies/:movie_id/actors', to: 'actors#create'
+
 end
