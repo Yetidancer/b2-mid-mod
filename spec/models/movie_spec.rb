@@ -9,6 +9,8 @@ RSpec.describe Movie, type: :model do
 
   describe 'relationships' do
     it { should belong_to :studio}
+    it { should have_many :actor_movies}
+    it { should have_many(:actors).through(:actor_movies)}
   end
 
   describe 'movie methods' do
@@ -48,6 +50,11 @@ RSpec.describe Movie, type: :model do
     it 'can sort actors by age' do
       expect(@movie_1.sort_actors.first).to eq(@actor_2)
       expect(@movie_1.sort_actors.last).to eq(@actor_4)
+    end
+
+    it 'can average actors age' do
+      expect(@movie_1.average_age).to eq(61)
+      expect(@movie_2.average_age).to eq(46)
     end
   end
 end
