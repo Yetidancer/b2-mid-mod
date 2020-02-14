@@ -2,6 +2,6 @@
 <% @studios.each do |studio| %>
   <%= studio.name %>
   <% studio.movies.each do |movie| %>
-    <%= movie.name %>
+    <%= link_to "#{movie.name}", "movies/#{movie.id}" %><br>
   <% end %>
 <% end %>

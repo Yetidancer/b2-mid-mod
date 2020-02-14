@@ -29,6 +29,12 @@ RSpec.describe 'actor show page', type: :feature do
       @actor_2 = Actor.create(name: "Mr. Bean",
                               age: 42,
                               movies: [@movie_1,@movie_3])
+      @actor_3 = Actor.create(name: "Hillary Duff",
+                              age: 34,
+                              movies: [@movie_2,@movie_3])
+      @actor_4 = Actor.create(name: "Cher",
+                              age: 80,
+                              movies: [@movie_1,@movie_4])
 
     end
     it 'should display actor stats and movies on actor show page.' do
@@ -39,6 +45,8 @@ RSpec.describe 'actor show page', type: :feature do
       expect(page).to have_content(@movie_2.name)
       expect(page).to have_content(@movie_4.name)
 
+      expect(page).to have_content(@actor_3.name)
+      expect(page).to have_content(@actor_4.name)
     end
 
   end

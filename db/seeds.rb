@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Studio.destroy_all
+Movie.destroy_all
+Actor.destroy_all
 
 studio_1 = Studio.create(name: "A24")
 studio_2 = Studio.create(name: "Warner Brothers")
@@ -30,3 +33,9 @@ actor_1 = Actor.create(name: "Tom Hanks",
 actor_2 = Actor.create(name: "Mr. Bean",
                         age: 42,
                         movies: [movie_1,movie_3])
+actor_3 = Actor.create(name: "Hillary Duff",
+                        age: 34,
+                        movies: [movie_2,movie_3])
+actor_4 = Actor.create(name: "Cher",
+                        age: 80,
+                        movies: [movie_1,movie_4])

@@ -6,8 +6,8 @@ class ActorsController < ApplicationController
 
   def create
     @movie = Movie.find(params[:movie_id])
-    require "pry"; binding.pry
     actor = Actor.new(actor_params)
+    actor.movies = [@movie]
     if actor.save
       redirect_to "/movies/#{@movie.id}"
     else

@@ -3,7 +3,7 @@
 <%= @movie.genre %>
 <h3>Actors:</h3>
 <% @movie.sort_actors.each do |actor| %>
-  <%= actor.name %>
+  <%= link_to "#{actor.name}", "/actors/#{actor.id}" %>
 <% end %>
 <h4>Average Age:</h4>
 <%= @movie.average_age %>
@@ -14,7 +14,6 @@
   <%= label_tag 'Name:'%>
   <%= text_field_tag 'name', nil, :required => true%><br>
   <%= text_field_tag 'age', 40, :hidden => true%>
-  <%= text_field_tag 'movies', [@movie], :hidden => true%>
   <br>
   <%= submit_tag "Add Actor" %>
 <% end %>
